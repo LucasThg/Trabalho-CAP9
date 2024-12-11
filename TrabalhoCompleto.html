@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SpendTrackr</title>
+    <!-- Adicionando o Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Container da página de login */
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(1, 26, 77, 0.7); /* Azul petróleo translúcido #011A4D com 70% de opacidade */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2; /* Para sobrepor outros elementos */
+            backdrop-filter: blur(10px); /* Aplicando um filtro de desfoque */
+        }
+        /* Título do login */
+        .login-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff7f50; /* Laranja mais vivo */
+        }
+        /* Laranja para os labels */
+        .label-orange {
+            color: #ff7f50; /* Laranja mais vivo */
+        }
+        /* Botão de login */
+        .login-button {
+            background-color: #ff7f50; /* Laranja mais vivo */
+            border: none;
+            color: #fff; /* Texto em branco */
+        }
+        /* Alteração de hover no botão */
+        .login-button:hover {
+            background-color: #ff6347; /* Tom mais escuro de laranja */
+        }
+        /* Imagem de fundo */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1620228885847-9eab2a1adddc?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* URL da imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajuste para preencher a tela */
+        }
+        /* Mensagem de feedback */
+        .feedback-message {
+            margin-top: 20px;
+            text-align: center;
+            color: #ff7f50; /* Cor laranja usada nas escritas */
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="login-container">
+            <h1 class="login-title text-center">SpendTrackr</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="label-orange">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label-orange">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                </div>
+                <button type="submit" class="btn btn-block login-button">Entrar</button>
+            </form>
+            <div id="feedbackMessage" class="feedback-message"></div>
+        </div>
+    </div>
+
+    <!-- Adicionando o jQuery e o Bootstrap JS para funcionalidades adicionais -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').submit(function(event) {
+                event.preventDefault(); // Impede o envio padrão do formulário
+                
+                // Obtendo os valores dos campos
+                var email = $('#email').val();
+                var password = $('#password').val();
+                
+                // Verificando as credenciais
+                if (email === "professor@teste.com" && password === "123456abc") {
+                    $('#feedbackMessage').text("Login autorizado").css("color", "#ff7f50"); // Mensagem no mesmo tom de laranja
+                } else {
+                    $('#feedbackMessage').text("Login ou senha incorretos").css("color", "#ff7f50"); // Mensagem no mesmo tom de laranja
+                }
+            });
+        });
+    </script>
+</body>
+</html>
